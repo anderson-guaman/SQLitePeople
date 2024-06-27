@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using People;
 
 namespace SQLitePeople
 {
@@ -15,9 +16,9 @@ namespace SQLitePeople
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
+            // TODO: Add statements for adding PersonRepository as a singleton
+            string dbPath = FileAccessHelper.GetLocalFilePath("people.db3");
+            builder.Services.AddSingleton<PersonRepository>(s => ActivatorUtilities.CreateInstance<PersonRepository>(s, dbPath));
 
             return builder.Build();
         }

@@ -6,7 +6,7 @@ namespace SQLitePeople.Models
     public class Person
     {
         [PrimaryKey,AutoIncrement]
-        public int IdPerson  {get;set;}
+        public int Id  {get;set;}
         [MaxLength(250),Unique]
         public string Name { get; set; }
 
